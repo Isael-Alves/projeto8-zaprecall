@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
-// function goQuestionsScreen(){}
-
-export default function TelaInicial() {
-
+export default function TelaInicial({ setVisible }) {
+  
   return (
     <Login>
       <nav>
         <img src="img/image 1.svg" alt="" />
         <h1>ZapRecall</h1>
-        <Button>Iniciar Recall!</Button>
+        <Button onClick={() =>  setVisible(false)}>Iniciar Recall!</Button>
       </nav>
     </Login>
   );

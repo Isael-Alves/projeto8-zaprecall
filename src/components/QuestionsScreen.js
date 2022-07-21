@@ -1,8 +1,28 @@
 import styled from "styled-components";
 import { BiRightArrow } from "react-icons/bi";
-import { GiReturnArrow } from "react-icons/gi";
+// import { GiReturnArrow } from "react-icons/gi";
+//icone de voltar <GiReturnArrow />
 
 export default function QuestionsScreen() {
+  const arrayQuestions = [
+    {
+      question: "O que é JSX?",
+      answer: "Uma extensão de linguagem do JavaScript."
+    },
+    {
+      question: "O React é __",
+      answer: "uma biblioteca JavaScript para construção de interfaces."
+    },
+    {
+      question: "Componentes devem iniciar com __ ",
+      answer: "letra maiúscula."
+    },
+    {
+      question: "O ReactDOM nos ajuda __",
+      answer: "interagindo com a DOM para colocar componentes React na mesma."
+    }
+  ];
+
   return (
     <>
       <Top>
@@ -11,26 +31,12 @@ export default function QuestionsScreen() {
       </Top>
       <Corpo>
         <ul>
-          <Card>
-            <h3>Pergunta</h3>
-            <BiRightArrow />
-            <GiReturnArrow />
-          </Card>
-          <Card>
-            <h3>Pergunta</h3>
-            <BiRightArrow />
-            <GiReturnArrow />
-          </Card>
-          <Card>
-            <h3>Pergunta</h3>
-            <BiRightArrow />
-            <GiReturnArrow />
-          </Card>
-          <Card>
-            <h3>Pergunta</h3>
-            <BiRightArrow />
-            <GiReturnArrow />
-          </Card>
+          {arrayQuestions.map((question, i) => (
+            <Card key={i}>
+              <h3>Pergunta {i + 1}</h3>
+              <BiRightArrow />
+            </Card>
+          ))}
         </ul>
       </Corpo>
       <Footer>
