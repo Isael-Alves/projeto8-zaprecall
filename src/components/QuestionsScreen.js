@@ -1,27 +1,87 @@
+import React from "react";
 import styled from "styled-components";
-import { BiRightArrow } from "react-icons/bi";
-// import { GiReturnArrow } from "react-icons/gi";
-//icone de voltar <GiReturnArrow />
+import CardScreen from "./CardScreen";
 
-export default function QuestionsScreen() {
+
+const newDeck = [];
+function CreadDeck() {
   const arrayQuestions = [
     {
       question: "O que é JSX?",
-      answer: "Uma extensão de linguagem do JavaScript."
+      answer: "Uma extensão de linguagem do JavaScript.",
+      tapped: false,
+      status: "notAnswer",
     },
     {
       question: "O React é __",
-      answer: "uma biblioteca JavaScript para construção de interfaces."
+      answer: "uma biblioteca JavaScript para construção de interfaces.",
+      tapped: false,
+      status: "notAnswer",
     },
     {
       question: "Componentes devem iniciar com __ ",
-      answer: "letra maiúscula."
+      answer: "letra maiúscula.",
+      tapped: false,
+      status: "notAnswer",
     },
     {
       question: "O ReactDOM nos ajuda __",
-      answer: "interagindo com a DOM para colocar componentes React na mesma."
-    }
+      answer: "interagindo com a DOM para colocar componentes React na mesma.",
+      tapped: false,
+      status: "notAnswer",
+    },
   ];
+
+  arrayQuestions.forEach((value) => newDeck.push({ ...value }));
+  newDeck.sort(() => Math.random() - 0.5);
+
+  return newDeck;
+}
+CreadDeck();
+
+export default function QuestionsScreen() {
+  const [Deck, setDeck] = React.useState(newDeck);
+  const [answered, setAnswered] = React.useState(0);
+  const [typeanswer, setTypeanswer] = React.useState([]);
+
+  function updatingCard(indexCard) {
+    let updatingDeck = newDeck.map((question, i) => {
+      if (i === indexCard) {
+        return {
+          ...question,
+          tapped: true,
+        }
+      } else {
+        return {
+          ...question,
+          tapped: false,
+        }
+      }
+    })
+
+    setDeck([...updatingDeck]);
+  }
+
+   function changeStatus(indexCard, status) {
+     let updatingDeck = newDeck.map((question, i) => {
+         if (i === indexCard) {
+             return {
+                 ...question,
+                 tap: false,
+                 status: status,
+             }
+         } else {
+             return {
+                 ...question,
+                 tap: false,
+             }
+         }
+     })
+     setDeck([...updatingDeck]);
+     setAnswered(answered + 1);
+
+     setTypeanswer([...typeanswer, status]);
+   }
 
   return (
     <>
@@ -31,16 +91,21 @@ export default function QuestionsScreen() {
       </Top>
       <Corpo>
         <ul>
-          {arrayQuestions.map((question, i) => (
-            <Card key={i}>
-              <h3>Pergunta {i + 1}</h3>
-              <BiRightArrow />
-            </Card>
+          {Deck.map((question, i) => (
+            <CardScreen
+              key={i}
+              i={i}
+              face={question.tapped}
+              question={question}
+              setDeck={setDeck}
+              updatingCard={updatingCard}
+              changeStatus={changeStatus}
+            />
           ))}
         </ul>
       </Corpo>
       <Footer>
-        <h4>0/4 CONCLUÍDOS</h4>
+        <h4>{typeanswer.length}/4 CONCLUÍDOS</h4>
       </Footer>
     </>
   );
@@ -70,33 +135,6 @@ const Corpo = styled.nav`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const Card = styled.li`
-  width: 300px;
-  height: 60px;
-  margin-bottom: 25px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 23px 15px;
-
-  background: #ffffff;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-
-  h3 {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-
-    color: #333333;
-  }
-  svg {
-    width: 20px;
-    height: 23px;
-  }
 `;
 
 const Footer = styled.footer`

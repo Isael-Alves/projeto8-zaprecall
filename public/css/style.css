@@ -1,9 +1,81 @@
-*{
-    font-family: 'Recursive', sans-serif;
-    box-sizing: border-box;
+* {
+  font-family: "Recursive", sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-    height: 100vh;
-    background-color: #FB6B6B;
+  height: 100vh;
+  background-color: #fb6b6b;
+}
+
+.Card {
+  width: 300px;
+  height: 60px;
+  margin-bottom: 25px;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  padding: 23px 15px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+.Card.virado {
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+
+  background-color: #ffffd5;
+}
+.Card.question {
+  display: flex;
+  flex-direction: row;
+}
+.Card h3 {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #333333;
+}
+svg {
+  width: 20px;
+  height: 23px;
+}
+.Buttons {
+  display: flex;
+}
+.Buttons p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+.Buttons .Button p {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0 auto;
+}
+.Buttons .Button {
+  width: 80px;
+  height: 35px;
+  margin-right: 5px;
+  border-radius: 5px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.red {
+  background-color: #ff3030;
+}
+.orange {
+  background-color: #ff922e;
+}
+.green {
+  background-color: #2fbe34;
 }

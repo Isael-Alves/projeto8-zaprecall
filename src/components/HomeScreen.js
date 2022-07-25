@@ -7,7 +7,7 @@ export default function TelaInicial({ setVisible }) {
       <nav>
         <img src="img/image 1.svg" alt="" />
         <h1>ZapRecall</h1>
-        <Button onClick={() =>  setVisible(false)}>Iniciar Recall!</Button>
+        <Button onClick={() => setVisible(false)}>Iniciar Recall!</Button>
       </nav>
     </Login>
   );
