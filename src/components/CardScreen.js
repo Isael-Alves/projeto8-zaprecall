@@ -29,10 +29,7 @@ function CardOverturned({ question, i, changeStatus }) {
             <div className="Button red" onClick={() => changeStatus(question, "errada")}>
               <p>Não lembrei</p>
             </div>
-            <div
-              className="Button orange"
-              onClick={() => changeStatus(question, "quase")}
-            >
+            <div className="Button orange" onClick={() => changeStatus(question, "quase")}>
               <p>Quase não lembrei</p>
             </div>
             <div className="Button green" onClick={() => changeStatus(question, "zap")}>
